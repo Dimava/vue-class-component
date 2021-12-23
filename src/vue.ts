@@ -170,7 +170,7 @@ export interface VueConstructor<V extends VueBase = Vue> extends VueMixin<V> {
 
   with<P extends { new (): unknown }>(
     Props: P
-  ): VueConstructor<V & VueWithProps<InstanceType<P>>>
+  ): VueConstructor<V & VueWithProps<Readonly<InstanceType<P>>>>
 }
 
 class VueImpl {
