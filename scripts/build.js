@@ -30,6 +30,7 @@ const babelConfigForModern = {
       },
     ],
   ],
+  plugins: ['@babel/plugin-proposal-class-properties'],
 }
 
 const babelConfigForLegacy = {
@@ -41,6 +42,7 @@ const babelConfigForLegacy = {
       },
     ],
   ],
+  plugins: ['@babel/plugin-proposal-class-properties'],
 }
 
 build(

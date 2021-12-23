@@ -13,7 +13,11 @@ import {
   EmitsOptions,
 } from 'vue'
 import { VueWithProps } from './props'
-import { ConstructPropClass, makePropClass, PropsDefinition } from './props-definition'
+import {
+  ConstructPropClass,
+  makePropClass,
+  PropsDefinition,
+} from './props-definition'
 
 function defineGetter<T, K extends keyof T>(
   obj: T,
@@ -348,7 +352,7 @@ class VueImpl {
   static withPropsDefinition<P extends PropsDefinition>(
     Props: P
   ): VueConstructor {
-	  return this.with(makePropClass(Props));
+    return this.with(makePropClass(Props))
   }
 
   $props!: Record<string, any>
