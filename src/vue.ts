@@ -13,6 +13,11 @@ import {
   EmitsOptions,
 } from 'vue'
 import { VueWithProps } from './props'
+import {
+  ConstructPropClass,
+  makePropClass,
+  PropsDefinition,
+} from './props-definition'
 
 function defineGetter<T, K extends keyof T>(
   obj: T,
@@ -171,6 +176,10 @@ export interface VueConstructor<V extends VueBase = Vue> extends VueMixin<V> {
   with<P extends { new (): unknown }>(
     Props: P
   ): VueConstructor<V & VueWithProps<Readonly<InstanceType<P>>>>
+
+  withPropsDefinition<P extends PropsDefinition>(
+    Props: P
+  ): VueConstructor<V & VueWithProps<Readonly<ConstructPropClass<P>>>>
 }
 
 class VueImpl {
@@ -338,6 +347,12 @@ class VueImpl {
       }
     }
     return PropsMixin as VueConstructor
+  }
+
+  static withPropsDefinition<P extends PropsDefinition>(
+    Props: P
+  ): VueConstructor {
+    return this.with(makePropClass(Props))
   }
 
   $props!: Record<string, any>

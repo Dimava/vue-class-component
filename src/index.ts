@@ -8,6 +8,8 @@ export { Options, createDecorator, mixins, setup } from './helpers'
 
 export { prop } from './props'
 
+export { makePropClass } from './props-definition'
+
 /**
  * Other types
  */
@@ -40,3 +42,14 @@ export {
   UnwrapSetupValue,
   UnwrapPromise,
 } from './helpers'
+
+export {
+  ConstructPropClass,
+  PropsDefinition,
+  ValidPropDefinition,
+  Constructor,
+  ExtractPropDefault,
+  ExtractPropType,
+  ExtractPropTypeSingle,
+  SimpleType,
+} from './props-definition'
